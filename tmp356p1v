@@ -1,0 +1,77 @@
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(LaTeX-electric-left-right-brace t)
+ '(LaTeX-indent-environment-list
+   '(("verbatim" current-indentation)
+	 ("verbatim*" current-indentation)
+	 ("filecontents" current-indentation)
+	 ("filecontents*" current-indentation)
+	 ("tabular" LaTeX-indent-tabular)
+	 ("tabular*" LaTeX-indent-tabular)
+	 ("array" LaTeX-indent-tabular)
+	 ("eqnarray" LaTeX-indent-tabular)
+	 ("eqnarray*" LaTeX-indent-tabular)
+	 ("displaymath")
+	 ("equation")
+	 ("equation*")
+	 ("picture")
+	 ("tabbing")))
+ '(TeX-electric-math nil)
+ '(global-display-line-numbers-mode t)
+ '(inhibit-startup-screen t)
+ '(ispell-program-name "aspell")
+ '(matlab-indent-function-body nil)
+ '(package-selected-packages '(matlab-mode auctex adaptive-wrap color-theme-modern)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal)))))
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(package-initialize)
+(load-theme 'desert t t)
+(enable-theme 'desert)
+
+;; The extra width is to account for line numbers displayed in the left gutter
+(add-to-list 'default-frame-alist '(width . 85))
+(add-to-list 'default-frame-alist '(height . 64))
+
+;; Enable BBEdit-esque reverse indent for soft-wrapped lines
+(setq-default adaptive-wrap-extra-indent 4)
+(add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
+(global-visual-line-mode +1)
+
+(setq-default completion-ignore-case t)
+(setq-default read-file-name-completion-ignore-case t)
+(setq-default read-buffer-completion-ignore-case t)
+
+;; Generic tab length
+(setq-default tab-width 4)
+
+;; LaTeX Formatting
+;; (setq-default LaTeX-indent-level 4)
+;; (setq-default LaTeX-item-indent 0)
+;; (setq-default TeX-brace-indent-level 4)
+
+;; Preserve open buffers and other state on restart
+(setq-default desktop-save-mode 1)
+(setq-default savehist-mode 1)
+
+;; Smooth scrolling
+(setq-default mouse-wheel-progressive-speed nil)
+
+(autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
+ (add-to-list
+  'auto-mode-alist
+  '("\\.m$" . matlab-mode))
+ (setq matlab-indent-function nil)
+ (setq matlab-shell-command "matlab")
