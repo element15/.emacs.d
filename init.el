@@ -35,13 +35,16 @@
  '(fixed-pitch ((t (:family "DejaVu Sans Mono"))))
  '(font-latex-italic-face ((t (:inherit italic :foreground "OliveDrab"))))
  '(font-latex-verbatim-face ((t (:inherit nil :foreground "burlywood")))))
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
+(setq package-list '(markdown-preview-mode markdown-mode smart-tab matlab-mode auctex adaptive-wrap color-theme-modern))
 (package-initialize)
+(unless package-archive-contents (package-refresh-contents))
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
 (load-theme 'desert t t)
 (enable-theme 'desert)
 
