@@ -25,7 +25,7 @@
  '(ispell-program-name "aspell")
  '(matlab-indent-function-body nil)
  '(package-selected-packages
-   '(markdown-preview-mode markdown-mode smart-tab matlab-mode auctex adaptive-wrap color-theme-modern)))
+   '(pcre2el markdown-mode smart-tab matlab-mode auctex adaptive-wrap color-theme-modern)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -38,7 +38,7 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(setq package-list '(markdown-preview-mode markdown-mode smart-tab matlab-mode auctex adaptive-wrap color-theme-modern))
+(setq package-list '(markdown-mode smart-tab matlab-mode auctex adaptive-wrap color-theme-modern pcre2el))
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
 (dolist (package package-list)
