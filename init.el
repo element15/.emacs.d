@@ -31,10 +31,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "PfEd" :slant normal :weight normal :height 113 :width normal))))
+ '(default ((t (:inherit nil :extend nil :stipple nil :background "gray20" :foreground "ghost white" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 110 :width normal :foundry "nil" :family "Monaco"))))
  '(fixed-pitch ((t (:family "DejaVu Sans Mono"))))
  '(font-latex-italic-face ((t (:inherit italic :foreground "OliveDrab"))))
  '(font-latex-verbatim-face ((t (:inherit nil :foreground "burlywood")))))
+(setq-default face-font-family-alternatives '(("Monaco" "DejaVu Sans Mono")))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
